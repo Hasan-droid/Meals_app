@@ -28,14 +28,6 @@ class _TabState extends ConsumerState<Tabs> {
 
   var currentTabIndex = 0;
 
-  void _showInfoMessage(String message) {
-    ScaffoldMessenger.of(context).clearSnackBars();
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text(message),
-      duration: const Duration(seconds: 2),
-    ));
-  }
-
   void selectTab(int index) {
     setState(() {
       currentTabIndex = index;
