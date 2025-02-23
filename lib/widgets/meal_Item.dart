@@ -5,17 +5,15 @@ import 'package:transparent_image/transparent_image.dart';
 import 'package:meals/screens/meal_detailsScreen.dart';
 
 class MealItem extends StatelessWidget {
-  const MealItem({super.key, required this.meal, required this.toggleFavorite});
+  const MealItem({super.key, required this.meal});
 
   final Meal meal;
-  final Function(Meal) toggleFavorite;
 
   void selectMeal(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => MealDetailsScreen(
           meal: meal,
-          toggleFavorite: toggleFavorite,
         ),
       ),
     );

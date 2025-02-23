@@ -15,6 +15,7 @@ final theme = ThemeData(
 );
 
 void main() {
+  //add providerScope
   runApp(const ProviderScope(child: App()));
 }
 
