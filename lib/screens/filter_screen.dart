@@ -12,23 +12,9 @@ class FilterScreen extends ConsumerStatefulWidget {
 }
 
 class _FiltersScreen extends ConsumerState<FilterScreen> {
-  void initState() {
-    final filters = ref.read(filtersProvider);
-    super.initState();
-    _glutenFreeFilterSet = filters[MealFilters.glutenFree]!;
-    _lactoseFreeFilterSet = filters[MealFilters.lactoseFree]!;
-    _vegetarianFreeFilterSet = filters[MealFilters.vegetarian]!;
-    _veganFreeFilterSet = filters[MealFilters.vegan]!;
-  }
-
-  var _glutenFreeFilterSet = false;
-  var _lactoseFreeFilterSet = false;
-  var _vegetarianFreeFilterSet = false;
-  var _veganFreeFilterSet = false;
-
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    final filters = ref.read(filtersProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Filters'),
@@ -37,22 +23,17 @@ class _FiltersScreen extends ConsumerState<FilterScreen> {
         canPop: false,
         onPopInvokedWithResult: (didPop, result) {
           if (didPop) return;
-          Navigator.of(context).pop({
-            ref.read(filtersProvider.notifier).setFilters({
-              MealFilters.glutenFree: _glutenFreeFilterSet,
-              MealFilters.lactoseFree: _lactoseFreeFilterSet,
-              MealFilters.vegetarian: _vegetarianFreeFilterSet,
-              MealFilters.vegan: _veganFreeFilterSet,
-            })
-          });
+          Navigator.of(context).pop();
         },
         child: Column(
           children: [
             SwitchListTile(
-              value: _glutenFreeFilterSet,
+              value: filters[MealFilters.glutenFree]!,
               onChanged: (isChecked) {
                 setState(() {
-                  _glutenFreeFilterSet = isChecked;
+                  ref
+                      .read(filtersProvider.notifier)
+                      .setFilter(MealFilters.glutenFree, isChecked);
                 });
               },
               title: Text(
@@ -69,10 +50,12 @@ class _FiltersScreen extends ConsumerState<FilterScreen> {
               ),
             ),
             SwitchListTile(
-              value: _veganFreeFilterSet,
+              value: filters[MealFilters.vegan]!,
               onChanged: (isChecked) {
                 setState(() {
-                  _veganFreeFilterSet = isChecked;
+                  ref
+                      .read(filtersProvider.notifier)
+                      .setFilter(MealFilters.vegan, isChecked);
                 });
               },
               title: Text(
@@ -89,10 +72,12 @@ class _FiltersScreen extends ConsumerState<FilterScreen> {
               ),
             ),
             SwitchListTile(
-              value: _vegetarianFreeFilterSet,
+              value: filters[MealFilters.vegetarian]!,
               onChanged: (isChecked) {
                 setState(() {
-                  _vegetarianFreeFilterSet = isChecked;
+                  ref
+                      .read(filtersProvider.notifier)
+                      .setFilter(MealFilters.vegetarian, isChecked);
                 });
               },
               title: Text(
@@ -109,10 +94,12 @@ class _FiltersScreen extends ConsumerState<FilterScreen> {
               ),
             ),
             SwitchListTile(
-              value: _lactoseFreeFilterSet,
+              value: filters[MealFilters.lactoseFree]!,
               onChanged: (isChecked) {
                 setState(() {
-                  _lactoseFreeFilterSet = isChecked;
+                  ref
+                      .read(filtersProvider.notifier)
+                      .setFilter(MealFilters.lactoseFree, isChecked);
                 });
               },
               title: Text(
