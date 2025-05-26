@@ -33,12 +33,15 @@ class MealItem extends StatelessWidget {
         },
         child: Stack(
           children: [
-            FadeInImage(
-              placeholder: MemoryImage(kTransparentImage),
-              image: NetworkImage(meal.imageUrl),
-              fit: BoxFit.cover,
-              height: 200,
-              width: double.infinity,
+            Hero(
+              tag: ValueKey(meal.id),
+              child: FadeInImage(
+                placeholder: MemoryImage(kTransparentImage),
+                image: NetworkImage(meal.imageUrl),
+                fit: BoxFit.cover,
+                height: 200,
+                width: double.infinity,
+              ),
             ),
             Positioned(
               bottom: 0,
@@ -47,7 +50,8 @@ class MealItem extends StatelessWidget {
               child: Container(
                 width: 300,
                 color: Colors.black54,
-                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                 child: Column(
                   children: [
                     Text(
@@ -59,15 +63,21 @@ class MealItem extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        MealItemTreat(icon: Icons.schedule_outlined, label: '${meal.duration} min'),
+                        MealItemTreat(
+                            icon: Icons.schedule_outlined,
+                            label: '${meal.duration} min'),
                         const SizedBox(
                           width: 12,
                         ),
-                        MealItemTreat(icon: Icons.shopping_bag, label: meal.affordability.name),
+                        MealItemTreat(
+                            icon: Icons.shopping_bag,
+                            label: meal.affordability.name),
                         const SizedBox(
                           width: 12,
                         ),
-                        MealItemTreat(icon: Icons.work_outline, label: meal.complexity.name),
+                        MealItemTreat(
+                            icon: Icons.work_outline,
+                            label: meal.complexity.name),
                       ],
                     )
                   ],
