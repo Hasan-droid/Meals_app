@@ -11,8 +11,7 @@ class MealsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget content = ListView.builder(
-        itemCount: mealsList.length,
-        itemBuilder: (context, index) => MealItem(meal: mealsList[index]));
+        itemCount: mealsList.length, itemBuilder: (context, index) => MealItem(meal: mealsList[index]));
 
     if (mealsList.isEmpty) {
       content = Center(
@@ -26,7 +25,7 @@ class MealsScreen extends StatelessWidget {
                   .headlineLarge!
                   .copyWith(color: Theme.of(context).colorScheme.onSurface),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Text(

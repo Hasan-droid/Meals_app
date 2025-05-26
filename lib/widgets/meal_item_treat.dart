@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:meals/models/meal.dart';
 
 class MealItemTreat extends StatelessWidget {
   const MealItemTreat({super.key, required this.icon, required this.label});
@@ -17,10 +16,8 @@ class MealItemTreat extends StatelessWidget {
         ),
         Text(
           label,
-          style: Theme.of(context)
-              .textTheme
-              .bodySmall!
-              .copyWith(color: Theme.of(context).colorScheme.onSurface),
+          style:
+              Theme.of(context).textTheme.bodySmall!.copyWith(color: Theme.of(context).colorScheme.onSurface),
         ),
       ],
     );
